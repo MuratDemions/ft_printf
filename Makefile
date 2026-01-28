@@ -8,7 +8,7 @@ AR = ar rcs
 
 RM = rm -f
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_putchar.c ft_putstr.c ft_putdec.c ft_puthex.c
 
 OBJS = ${SRCS:.c=.o}
 
