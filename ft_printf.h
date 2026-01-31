@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str.c                                           :+:      :+:    :+:   */
+/*   libforprintf.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-01-28 16:42:25 by musipit           #+#    #+#             */
-/*   Updated: 2026/01/31 11:33:35 by musipit          ###   ########.fr       */
+/*   Created: 2026-01-28 16:37:40 by musipit           #+#    #+#             */
+/*   Updated: 2026-01-28 16:37:40 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <unistd.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+# include <string.h>
 
-int	ft_putstr(char *s)
-{
-	int	i;
+int ft_printf(const char *format, ...);
+int    ft_putchar(char c);
+int    ft_putstr(char *s);
+int  ft_hex(long long number, int format);
+int ft_putnbr(long n);
 
-	i = 0;
-	if (ft_putchar(*s) == -1)
-		return (-1);
-	while (s[i])
-	{
-		if (ft_putchar(s[i++]) == -1)
-			return (-1);
-	}
-	return (i);
-}
+#endif
