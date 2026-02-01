@@ -23,12 +23,13 @@ int	ft_putstr(char *s)
 	int	i;
 
 	i = 0;
-	if (ft_putchar(*s) == -1)
+	if (ft_putchar(s[i++]) == -1)
 		return (-1);
 	while (s[i])
 	{
-		if (ft_putchar(s[i++]) == -1)
+		if (ft_putchar(s[i]) == -1)
 			return (-1);
+		i++;
 	}
 	return (i);
 }

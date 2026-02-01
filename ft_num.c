@@ -49,8 +49,8 @@ int	ft_hex(long long number, int format)
 	if (number >= 16)
 		len = len + ft_hex(number / 16, format);
 	if (format == 'X')
-		ft_putchar(hex_upper[number]);
+		len = len + ft_putchar(hex_upper[number % 16]);
 	else
-		ft_putchar(hex[number]);
+		len = len + ft_putchar(hex[number % 16]);
 	return (len);
 }

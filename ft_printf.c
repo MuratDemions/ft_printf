@@ -33,11 +33,24 @@ static int	f_stringer_and_len_returner(va_list arg, char format)
 		return (ft_putnbr(va_arg(arg, int)));
 	else if (format == 'X' || format == 'x')
 		return (ft_hex(va_arg(arg, long long), format));
-	else if (format == '%')
-		return (ft_putchar('%'));
+	else if (format == '%' )
+		return (ft_putstr("%"));
 	else if(format == '\0')
 		return (-1);
 	return(0);
+}
+static int  sing_counter(const char *format)
+{
+    int i;
+
+    i = 0;
+    while (format[i] == '%')
+    {
+        i++;
+    }
+    if(i % 2 == 1)
+        return (-1);
+    return (0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -46,7 +59,8 @@ int	ft_printf(const char *format, ...)
 	va_list	arg;
     long total_len;
     long str_len;
-
+    
+    str_len = 0;
 	i = 0;
 	if (!format)
         return (-1);
@@ -55,9 +69,14 @@ int	ft_printf(const char *format, ...)
     {
 	    if(format[i] == '%')
         {
-            if (checker(format[i++]))
+            if(format[i + 1] == '%')
             {
-                str_len = f_stringer_and_len_returner(arg, format[i]);
+                str_len = sing_counter(format);
+                break;
+            }
+            else if (checker(format[i++]))
+            {
+                str_len = str_len + f_stringer_and_len_returner(arg, format[i]);
                 if(str_len == -1)
                     return (-1);
                 total_len = str_len - 1;
@@ -66,6 +85,7 @@ int	ft_printf(const char *format, ...)
         else if(ft_putchar(format[i++]) == -1)
 		    return (-1);
         total_len++;
+        i++;
     }
     va_end(arg);
     return(str_len);
