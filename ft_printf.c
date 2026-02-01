@@ -39,7 +39,7 @@ static int	f_stringer_and_len_returner(va_list arg, char format)
 		return (-1);
 	return(0);
 }
-static int  sing_counter(const char *format)
+static int  percent_counter(const char *format)
 {
     int i;
 
@@ -52,44 +52,44 @@ static int  sing_counter(const char *format)
         return (-1);
     return (0);
 }
+static int	writer(const char *format, va_list arg)
+{
+    int		i;
+    long	str_len;
+    int per;
+
+    i = 0;
+    str_len = 0;
+    while (format[i] && str_len != -1)
+    {
+        if (format[i] == '%' && format[i + 1] == '%')
+        {
+            per = percent_counter(format);
+            if(per == -1)
+                return (-1);
+        }
+        if (format[i] == '%' && checker(format[i + 1]))
+        {
+            str_len = str_len + f_stringer_and_len_returner(arg, format[++i]);
+            if (str_len == -1)
+                return (-1);
+        }
+        else if (format[i] != '%')
+            str_len = str_len + ft_putchar(format[i]);
+        i++;
+    }
+    return (str_len);
+}
 
 int	ft_printf(const char *format, ...)
 {
-	int	i;
 	va_list	arg;
-    long total_len;
-    long str_len;
-    
-    str_len = 0;
-	i = 0;
-	if (!format)
-        return (-1);
-	va_start(arg, format);
-    while (format[i])
-    {
-	    if(format[i] == '%')
-        {
-            if(format[i + 1] == '%')
-            {
-                str_len = sing_counter(format);
-                break;
-            }
-            else if (checker(format[i++]))
-            {
-                str_len = str_len + f_stringer_and_len_returner(arg, format[i]);
-                if(str_len == -1)
-                    return (-1);
-                total_len = str_len - 1;
-            }
-        }
-        else if(ft_putchar(format[i++]) == -1)
-		    return (-1);
-        total_len++;
-        i++;
-    }
-    va_end(arg);
-    return(str_len);
-}
+	int		str_len;
 
-// variadic fonksiyonlar, variadic fonksiyonlar içerisindeki kullanılan şeyler anlamları tanımları vs
-// printf dışında variadic fonksiyon örnekleri
+	if (!format)
+		return (-1);
+	va_start(arg, format);    
+	str_len = writer(format, arg);
+	va_end(arg);
+	return (str_len);
+}    
