@@ -29,28 +29,41 @@ int	ft_putnbr(long n)
 	return (len + 1);
 }
 
-int	ft_hex(long long number, int format)
+static int	checkher(int format, long long number)
 {
-	int		len;
 	char	*hex;
 	char	*hex_upper;
+	int		len;
 
+	len = 0;
 	hex = "0123456789abcdef";
 	hex_upper = "0123456789ABCDEF";
-	len = 0;
-	if (number == '\0')
-		return (-1);
-	if (format == 'p')
-	{
-		ft_putstr("0x");
-		format = 0;
-		len = len + 2;
-	}
 	if (number >= 16)
 		len = len + ft_hex(number / 16, format);
 	if (format == 'X')
 		len = len + ft_putchar(hex_upper[number % 16]);
 	else
 		len = len + ft_putchar(hex[number % 16]);
+	return (len);
+}
+
+int	ft_hex(long long number, int format)
+{
+	int		len;
+
+	len = 0;
+	if (number == '\0')
+	{
+		if (ft_putstr("(nil)") == -1)
+			return (-1);
+		return (5);
+	}
+	if (format == 'p')
+	{
+		ft_putstr("0x");
+		format = 0;
+		len = len + 2;
+	}
+	len = len + checkher(format, number);
 	return (len);
 }

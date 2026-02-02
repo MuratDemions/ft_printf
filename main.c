@@ -18,8 +18,6 @@ int main(void)
 	printf("[%d]\n", ft_printf("%X", 99999));
     printf("[%d]\n", printf("%p", "a"));
 	printf("[%d]\n", ft_printf("%p", "a"));
-    printf("[%d]\n", printf((void *)0));
-	printf("[%d]\n", ft_printf((void *)0));
 	printf("[%d]\n", printf("%c%s%p%d%i%u%x%X", 'a',"samet","asd",142,1142,11142,111142,1111142));
 	printf("[%d]\n", ft_printf("%c%s%p%d%i%u%x%X", 'a',"samet","asd",142,1142,11142,111142,1111142));
     return 0;

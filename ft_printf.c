@@ -13,12 +13,14 @@
 #include "ft_printf.h"
 #include <stdarg.h>
 
-static int checker(char format)
+static int	checker(char format)
 {
-    if (format == 'c' || format == 'd' || format == 'i' || format == 'u' || format == '%' 
-        || format == 's' || format == 'x' || format == 'X' || format == 'p')
-        return (1);
-    return(0);  
+	if (format == 'c' || format == 'd' || format == 'i'
+		|| format == 'u' || format == '%'
+		|| format == 's' || format == 'x'
+		|| format == 'X' || format == 'p')
+		return (1);
+	return (0);
 }
 
 static int	f_stringer_and_len_returner(va_list arg, char format)
@@ -35,50 +37,52 @@ static int	f_stringer_and_len_returner(va_list arg, char format)
 		return (ft_hex(va_arg(arg, long long), format));
 	else if (format == '%' )
 		return (ft_putstr("%"));
-	else if(format == '\0')
+	else if (format == '\0')
 		return (-1);
-	return(0);
+	return (0);
 }
-static int  percent_counter(const char *format)
-{
-    int i;
 
-    i = 0;
-    while (format[i] == '%')
-    {
-        i++;
-    }
-    if(i % 2 == 1)
-        return (-1);
-    return (0);
+static int	percent_counter(const char *format)
+{
+	int	i;
+
+	i = 0;
+	while (format[i] == '%')
+	{
+		i++;
+	}
+	if (i % 2 == 1)
+		return (-1);
+	return (0);
 }
+
 static int	writer(const char *format, va_list arg)
 {
-    int		i;
-    long	str_len;
-    int per;
+	int		i;
+	long	str_len;
+	int		per;
 
-    i = 0;
-    str_len = 0;
-    while (format[i] && str_len != -1)
-    {
-        if (format[i] == '%' && format[i + 1] == '%')
-        {
-            per = percent_counter(format);
-            if(per == -1)
-                return (-1);
-        }
-        if (format[i] == '%' && checker(format[i + 1]))
-        {
-            str_len = str_len + f_stringer_and_len_returner(arg, format[++i]);
-            if (str_len == -1)
-                return (-1);
-        }
-        else if (format[i] != '%')
-            str_len = str_len + ft_putchar(format[i]);
-        i++;
-    }
-    return (str_len);
+	i = 0;
+	str_len = 0;
+	while (format[i] && str_len != -1)
+	{
+		if (format[i] == '%' && format[i + 1] == '%')
+		{
+			per = percent_counter(format);
+			if (per == -1)
+				return (-1);
+		}
+		if (format[i] == '%' && checker(format[i + 1]))
+		{
+			str_len = str_len + f_stringer_and_len_returner(arg, format[++i]);
+			if (str_len == -1)
+				return (-1);
+		}
+		else if (format[i] != '%')
+			str_len = str_len + ft_putchar(format[i]);
+		i++;
+	}
+	return (str_len);
 }
 
 int	ft_printf(const char *format, ...)
@@ -88,8 +92,8 @@ int	ft_printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-	va_start(arg, format);    
+	va_start(arg, format);
 	str_len = writer(format, arg);
 	va_end(arg);
 	return (str_len);
-}    
+}
