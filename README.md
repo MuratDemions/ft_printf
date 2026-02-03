@@ -1,4 +1,4 @@
-This project has been created as part of the 42 curriculum by musipit.*
+*This project has been created as part of the 42 curriculum by musipit.*
 
 # ft_printf
 
@@ -18,17 +18,19 @@ standart `printf` fonksiyonu ile karşılaştırılarak test edilmiştir.
 
 * ft_putchar    - Tek bir karakter yazdırmak için kullanılır.
 * ft_putstr     - Bir karakter dizisi yazdırmak için kullanılır.
-* ft_putdec     - Ondalık sayıları yazdırmak içi kullanılır.
-* ft_puthex     - Onaltılık sayı sistemindeki sayıları yazdırmak için kullanılır.
+* ft_putnbr     - Ondalık sayıları yazdırmak içi kullanılır.
+* ft_hex        - Onaltılık sayı sistemindeki sayıları yazdırmak için kullanılır.
+* checker       - Gönderilen argümanın flaglarim arasında olup olmadığını kontrol edemek için kullanılır.
+* f_stringer_and_len_returner   - Flaglarıma göre yönlendirme yapmam için kullanılır.
 
 ## Kullanım
 
 #### Makefile Kurallar (Targets)
 
-* make veya make all - libft.a kütüphanesini derleyin
+* make veya make all - ft_printf.a kütüphanesini derleyin
 * make clean - Tüm nesne dosyalarını .o temizleyin
-* make fclean - Tüm nesne dosyalarını .o ve libft.a kütüphanesini temizleyin
-
+* make fclean - Tüm nesne dosyalarını .o ve ft_printf.a kütüphanesini temizleyin
+* make re - make ile derlenen ft_printf.a kütüphanesini ve tüm nesne dosyalarını siler ve tekrardan derler
 
 ## Kaynakça
 

@@ -18,18 +18,41 @@ int	ft_putnbr(long n)
 	int	len;
 
 	len = 0;
+	if (n < 0)
+	{
+		if (ft_putchar('-') == -1)
+			return (-1);
+		n = -n;
+		len = 1;
+	}
 	if (n > 9)
 	{
-		len = ft_putnbr(n / 10);
+		len = len + ft_putnbr(n / 10);
 		if (len == -1)
 			return (-1);
 	}
-	if (ft_putchar((n % 10 + '0')) == -1)
+	if (ft_putchar((n % 10) + '0') == -1)
 		return (-1);
 	return (len + 1);
 }
 
-static int	checkher(int format, long long number)
+int	ft_putuns(unsigned int n)
+{
+	int	len;
+
+	len = 0;
+	if (n >= 10)
+	{
+		len = ft_putuns(n / 10);
+		if (len == -1)
+			return (-1);
+	}
+	if (ft_putchar((n % 10) + '0') == -1)
+		return (-1);
+	return (len + 1);
+}
+
+static int	checkher(int format, unsigned long long number)
 {
 	char	*hex;
 	char	*hex_upper;
@@ -47,12 +70,12 @@ static int	checkher(int format, long long number)
 	return (len);
 }
 
-int	ft_hex(long long number, int format)
+int	ft_hex(unsigned long long number, int format)
 {
-	int		len;
+	int	len;
 
 	len = 0;
-	if (number == '\0')
+	if (format == 'p' && number == 0)
 	{
 		if (ft_putstr("(nil)") == -1)
 			return (-1);
@@ -60,9 +83,16 @@ int	ft_hex(long long number, int format)
 	}
 	if (format == 'p')
 	{
-		ft_putstr("0x");
-		format = 0;
+		if (ft_putstr("0x") == -1)
+			return (-1);
+		format = 'x';
 		len = len + 2;
+	}
+	if (number == 0)
+	{
+		if (ft_putchar('0') == -1)
+			return (-1);
+		return (len + 1);
 	}
 	len = len + checkher(format, number);
 	return (len);
