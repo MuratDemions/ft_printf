@@ -15,13 +15,10 @@
 
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_hex(unsigned long long number, int format);
 int	ft_putnbr(long n);
 int	ft_putuns(unsigned int n);
-int	checker(char format);
-int	f_stringer_and_len_returner(va_list arg, char format);
 
 #endif

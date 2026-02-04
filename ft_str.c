@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-01-28 16:42:25 by musipit           #+#    #+#             */
-/*   Updated: 2026/01/31 11:33:35 by musipit          ###   ########.fr       */
+/*   Created: 2026-02-04 14:01:27 by musipit           #+#    #+#             */
+/*   Updated: 2026-02-04 14:01:27 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putstr(char *s)
 	int	i;
 
 	if (!s)
-		return (ft_putstr("(nil)"));
+		return (ft_putstr("(null)"));
 	i = 0;
 	while (s[i])
 	{

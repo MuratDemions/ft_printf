@@ -1,4 +1,4 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 CC = cc
 
@@ -8,7 +8,7 @@ AR = ar rcs
 
 RM = rm -f
 
-SRCS = ft_printf.c ft_str.c ft_num.c ft_writer.c
+SRCS = ft_printf.c ft_str.c ft_num.c
 
 OBJS = ${SRCS:.c=.o}
 

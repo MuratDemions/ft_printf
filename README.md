@@ -19,18 +19,17 @@ standart `printf` fonksiyonu ile karşılaştırılarak test edilmiştir.
 * ft_putchar    - Tek bir karakter yazdırmak için kullanılır.
 * ft_putstr     - Bir karakter dizisi yazdırmak için kullanılır.
 * ft_putnbr     - Ondalık sayıları yazdırmak içi kullanılır.
+* ft_putuns     - Ondalık olarak pozitif sayıları yazdırmak için kullanılır.
 * ft_hex        - Onaltılık sayı sistemindeki sayıları yazdırmak için kullanılır.
-* checker       - Gönderilen argümanın flaglarim arasında olup olmadığını kontrol edemek için kullanılır.
-* f_stringer_and_len_returner   - Flaglarıma göre yönlendirme yapmam için kullanılır.
 
 ## Kullanım
 
 #### Makefile Kurallar (Targets)
 
-* make veya make all - ft_printf.a kütüphanesini derleyin
+* make veya make all - libftprintf.a kütüphanesini derleyin
 * make clean - Tüm nesne dosyalarını .o temizleyin
-* make fclean - Tüm nesne dosyalarını .o ve ft_printf.a kütüphanesini temizleyin
-* make re - make ile derlenen ft_printf.a kütüphanesini ve tüm nesne dosyalarını siler ve tekrardan derler
+* make fclean - Tüm nesne dosyalarını .o ve libftprintf.a kütüphanesini temizleyin
+* make re - make ile derlenen libftprintf.a kütüphanesini ve tüm nesne dosyalarını siler ve tekrardan derler
 
 ## Kaynakça
 
@@ -39,3 +38,4 @@ standart `printf` fonksiyonu ile karşılaştırılarak test edilmiştir.
 * ft_printf Subject(PDF)
 * cppreference – printf
 * ChatGPT: bazı kodların kullanım çeşitliliğini öğrenmek için
+* 42 Kocaelindeki eski ana eğitimden olan ve benle beraber başlayan kickof daki arkadaşlarım.

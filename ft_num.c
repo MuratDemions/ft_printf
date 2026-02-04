@@ -52,7 +52,7 @@ int	ft_putuns(unsigned int n)
 	return (len + 1);
 }
 
-static int	checkher(int format, unsigned long long number)
+static int	checkandwrite(int format, unsigned long long number)
 {
 	char	*hex;
 	char	*hex_upper;
@@ -94,6 +94,6 @@ int	ft_hex(unsigned long long number, int format)
 			return (-1);
 		return (len + 1);
 	}
-	len = len + checkher(format, number);
+	len = len + checkandwrite(format, number);
 	return (len);
 }
